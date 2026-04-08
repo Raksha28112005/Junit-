@@ -1,3 +1,4 @@
+exp16
 docker build -t my-python-app .
 docker images
 docker run my-python-app
@@ -5,3 +6,34 @@ docker run my-python-app
 docker build -t my-python-app1 .
 docker images
 docker run -p 5000:5000 my-python-app1
+
+
+exp17
+docker run -d nginx
+docker run -d -p 8080:80 nginx
+http://localhost:8080
+docker volume create myvolume
+docker volume ls
+docker run -it -v myvolume:/data ubuntu bash
+cd /data
+echo "Docker Volume Persistence Test" > test.txt
+exit
+docker run -it -v myvolume:/data ubuntu bash
+Check file:
+cat /data/test.txt
+exit
+docker run -d -p 8081:80 -v myvolume:/usr/share/nginx/html nginx
+docker run -it -v myvolume:/data ubuntu bash
+echo "<h1>Persistent Web Page</h1>" > /data/index.html
+exit
+http://localhost:8081
+Check running containers:
+docker ps
+Check volumes:
+docker volume ls
+Inspect volume:
+docker volume inspect myvolume
+
+
+
+
