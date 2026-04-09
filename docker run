@@ -36,4 +36,23 @@ docker volume inspect myvolume
 
 
 
+exp18
+docker build -t java-app .
+docker login
+Enter your Docker Hub username and password
+docker tag java-app yourusername/java-app:v1
+docker push yourusername/java-app:v1
+
+
+exp19
+
+docker build -t java-app .
+docker run -d -t java-app
+
+
+
+
+
+
+
 
